@@ -1,8 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div style="text-align:left">
+  <div class="mat-toolbar">
+  <div class="mat-headline">
+    {{ title }}.
+  </div>
+  </div>
 
 <!--  <input type="number" #inputNumber [(ngModel)]="amount"/>-->
   <form class="example-form">
@@ -13,8 +15,8 @@
   </form>
 
 
-  <h2>USA</h2>
-  <p>{{usWord}}</p>
-  <h2>India</h2>
-  <p>{{indianWord}}</p>
+  <div class="mat-subheading-1">- How Americans say?</div>
+  <div class="mat-subheading-2">{{usWord}}</div>
+  <div class="mat-subheading-1">How south asians say?</div>
+  <div class="mat-subheading-2">{{indianWord}}</div>
 </div>
