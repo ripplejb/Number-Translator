@@ -25,12 +25,25 @@ export class MoneyTranslatorService {
   constructor() { }
 
   convertToWord(amount: number, type: NumberType) {
+    let result = '';
     switch (type) {
       case NumberType.INDIA:
-        return this.toWord(amount, this.indiaDigits, 2);
+         result = this.toWord(amount, this.indiaDigits, 2);
+         return this.highlightWords(result, this.indiaDigits);
       case NumberType.USA:
-        return this.toWord(amount, this.usDigits, 3);
+        result = this.toWord(amount, this.usDigits, 3);
+        return this.highlightWords(result, this.usDigits);
     }
+
+
+  }
+
+  private highlightWords(result: string, arr: string[]) {
+    arr.forEach((val) => {
+      result = result.replace(new RegExp(`${val}`, 'g'), `<span class="nt-highlightText">${val}</span>`);
+    } );
+
+    return result;
   }
 
   private toWord(num: number, above1000Array: string[], skipDigit: number) {
@@ -92,7 +105,7 @@ export class MoneyTranslatorService {
   }
 
   private isSupported(num: number) {
-    return num.toString().length <= 13;
+    return num.toString().length <= 16;
   }
 
   private get2DigitWord(num: number) {

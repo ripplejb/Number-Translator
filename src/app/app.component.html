@@ -7,8 +7,8 @@
   </div>
 
 <!--  <input type="number" #inputNumber [(ngModel)]="amount"/>-->
-  <form class="example-form">
-    <mat-form-field class="example-full-width" >
+  <form class="nt-form">
+    <mat-form-field class="nt-full-width" >
       <input placeholder="Enter a number" matInput type="number" #inputNumber [formControl]="amount">
     </mat-form-field>
 
@@ -16,7 +16,7 @@
 
 
   <div class="mat-subheading-1">- How Americans say?</div>
-  <div class="mat-subheading-2">{{usWord}}</div>
+  <div class="mat-subheading-2" [innerHTML]="usWord"></div>
   <div class="mat-subheading-1">How south asians say?</div>
-  <div class="mat-subheading-2">{{indianWord}}</div>
+  <div class="mat-subheading-2" [innerHTML]="indianWord"></div>
 </div>
