@@ -1,15 +1,15 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {map, startWith} from 'rxjs/operators';
 import {fromEvent, Subscription} from 'rxjs';
 import {MoneyTranslatorService, NumberType} from './money-translatorservice/money-translator.service';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Number Translator';
   amount = new FormControl('', [Validators.required]);
@@ -22,13 +22,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   }
 
-  @ViewChild('inputNumber')
-  input: ElementRef;
 
-
-  ngAfterViewInit(): void {
-    const input$ = fromEvent(this.input.nativeElement, 'keyup').pipe(map((event: any) => {
-      return event.target.value;
+  ngOnInit(): void {
+    const input$ = this.amount.valueChanges.pipe(map((value: any) => {
+      return value;
     }), startWith('0'));
     this.subscription = input$.subscribe((value: string) => {
       const num = +value;
@@ -39,7 +36,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+   this.subscription.unsubscribe();
   }
 
 

@@ -6,10 +6,11 @@
   </div>
   </div>
 
-<!--  <input type="number" #inputNumber [(ngModel)]="amount"/>-->
   <form class="nt-form">
     <mat-form-field class="nt-full-width" >
-      <input placeholder="Enter a number" matInput type="number" #inputNumber [formControl]="amount">
+      <label>
+        <input placeholder="Enter a number" matInput type="number" [formControl]="amount">
+      </label>
     </mat-form-field>
 
   </form>
